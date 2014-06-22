@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery Accordion</title>
+    <link rel="stylesheet" type="text/css" href="css/jquery.accordion.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+
+  </head>
+  <body>
+    <section class="intro">
+      <h1>jQuery Accordion</h1>
+      <p>The missing jQuery responsive, CSS powered, accordion plugin.</p>
+
+      <a href="https://github.com/vctrfrnndz/jquery-accordion" class="btn"><img width="25" src="svg/github.svg">Fork on Github</a>
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=victor%2emin%2ejs%40gmail%2ecom&lc=US&item_name=jQuery%20Accordion%20Plugin&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest" class="btn"><img width="25" src="svg/paypal.svg">Donate via Paypal</a>
+    </section>
+
+    <h2>Accordion Group <br><small>(single open)</small></h2>
+    <section id="only-one" data-accordion-group>
+      <section data-accordion>
+        <button data-control>Accordion 1</button>
+        <div data-content>
+          <article>Item</article>
+          <article data-accordion>
+            <button data-control>2nd Level</button>
+            <div data-content>
+              <article>Item</article>
+              <article>Hoodie ennui Godard aesthetic, art party whatever trust fund slow-carb kogi tattooed single-origin coffee banjo. Deep v tote bag brunch, artisan distillery chillwave Williamsburg sartorial. Mustache blog wayfarers Carles, forage biodiesel butcher street art. Hashtag small batch bitters deep v gluten-free. Semiotics butcher blog, paleo asymmetrical narwhal selvage pug Pitchfork DIY artisan Wes Anderson put a bird on it drinking vinegar whatever. Artisan McSweeney's Shoreditch, wolf yr Marfa street art locavore craft beer aesthetic 90's gentrify. Yr hella fingerstache, Echo Park VHS +1 church-key XOXO Vice selvage gastropub readymade literally wayfarers.</article>
+              <article>Item</article>
+              <article>Item</article>
+              <article>Item</article>
+              <article>Item</article>
+            </div>
+          </article>
+          <article data-accordion>
+            <button data-control>2nd Level</button>
+            <div data-content>
+              <article>Item</article>
+              <article>Item</article>
+              <article data-accordion>
+                <button data-control>3rd Level</button>
+                <div data-content>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                </div>
+              </article>
+              <article data-accordion>
+                <button data-control>3rd Level</button>
+                <div data-content>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                </div>
+              </article>
+            </div>
+          </article>
+          <article>Item</article>
+          <article>Item</article>
+          <article>Item</article>
+        </div>
+      </section>
+
+      <section data-accordion>
+        <button data-control>Accordion 2</button>
+        <div data-content>
+          <article>Item</article>
+          <article>Item</article>
+          <article>Item</article>
+          <article>Item</article>
+          <article>Item</article>
+          <article>Item</article>
+        </div>
+      </section>
+    </section>
+
+    <h2>Accordion Group <br><small>(multiple open)</small></h2>
+    <section id="multiple" data-accordion-group>
+      <section data-accordion>
+        <button data-control>Accordion 1</button>
+        <div data-content>
+          <article>Item</article>
+          <article data-accordion>
+            <button data-control>2nd Level</button>
+            <div data-content>
+              <article>Item</article>
+              <article>Hoodie ennui Godard aesthetic, art party whatever trust fund slow-carb kogi tattooed single-origin coffee banjo. Deep v tote bag brunch, artisan distillery chillwave Williamsburg sartorial. Mustache blog wayfarers Carles, forage biodiesel butcher street art. Hashtag small batch bitters deep v gluten-free. Semiotics butcher blog, paleo asymmetrical narwhal selvage pug Pitchfork DIY artisan Wes Anderson put a bird on it drinking vinegar whatever. Artisan McSweeney's Shoreditch, wolf yr Marfa street art locavore craft beer aesthetic 90's gentrify. Yr hella fingerstache, Echo Park VHS +1 church-key XOXO Vice selvage gastropub readymade literally wayfarers.</article>
+              <article>Item</article>
+              <article>Item</article>
+              <article>Item</article>
+              <article>Item</article>
+            </div>
+          </article>
+          <article data-accordion>
+            <button data-control>2nd Level</button>
+            <div data-content>
+              <article>Item</article>
+              <article>Item</article>
+              <article data-accordion>
+                <button data-control>3rd Level</button>
+                <div data-content>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                </div>
+              </article>
+              <article data-accordion>
+                <button data-control>3rd Level</button>
+                <div data-content>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                  <article>Item</article>
+                </div>
+              </article>
+            </div>
+          </article>
+          <article>Item</article>
+          <article>Item</article>
+          <article>Item</article>
+        </div>
+      </section>
+
+      <section data-accordion>
+        <button data-control>Accordion 2</button>
+        <div data-content>
+          <article>Item</article>
+          <article>Item</article>
+          <article>Item</article>
+          <article>Item</article>
+          <article>Item</article>
+          <article>Item</article>
+        </div>
+      </section>
+    </section>
+
+    <h2>Single Accordion <br><small>(easeInOutQuad, 600ms duration)</small></h2>
+    <section id="single" data-accordion>
+      <button data-control>Single Accordion</button>
+      <div data-content>
+        <article>Item</article>
+        <article>Item</article>
+        <article>Item</article>
+        <article>Item</article>
+        <article>Item</article>
+        <article>Item</article>
+      </div>
+    </section>
+
+    <section class="options">
+      <h2>Options</h2>
+
+      <table class="table hp-table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Default</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>transitionSpeed</td>
+            <td>300</td>
+            <td>int</td>
+            <td>Transition speed on miliseconds.</td>
+          </tr>
+          <tr>
+            <td>transitionEasing</td>
+            <td>'ease'</td>
+            <td>string</td>
+            <td>CSS value for easing</td>
+          </tr>
+          <tr>
+            <td>controlElement</td>
+            <td>'[data-control]'</td>
+            <td>string</td>
+            <td>CSS selector for the element acting as a button inside accordions.</td>
+          </tr>
+          <tr>
+            <td>contentElement</td>
+            <td>'[data-content]'</td>
+            <td>string</td>
+            <td>CSS selector for the element containing hide/show content.</td>
+          </tr>
+          <tr>
+            <td>groupElement</td>
+            <td>'[data-accordion-group]'</td>
+            <td>string</td>
+            <td>CSS selector for a parent element containing a group of accordions.</td>
+          </tr>
+          <tr>
+            <td>singleOpen</td>
+            <td>true</td>
+            <td>boolean</td>
+            <td>Opens a single accordion a time. If false, multiple accordions can be open a time.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="snippet">
+      <h2>Defaults</h2>
+
+      <script src="https://gist.github.com/vctrfrnndz/58966480a6586748474d.js"></script>
+    </section>
+
+    <section class="copyright">
+      &copy; 2014 Victor Fernández / <a href="http://github.com/vctrfrnndz">@vctrfrnndz</a> / <a href="mailto:victor@vctrfrnndz.com">email</a> / <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=victor%2emin%2ejs%40gmail%2ecom&lc=US&item_name=jQuery%20Accordion%20Plugin&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest" >donate</a>
+    </section>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.accordion.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#only-one [data-accordion]').accordion();
+
+        $('#multiple [data-accordion]').accordion({
+          singleOpen: false
+        });
+
+        $('#single[data-accordion]').accordion({
+          transitionEasing: 'cubic-bezier(0.455, 0.030, 0.515, 0.955)',
+          transitionSpeed: 200
+        });
+      });
+    </script>
+  </body>
+</html>

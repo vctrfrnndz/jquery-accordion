@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- The icon can be used freely in both personal and commercial projects with no attribution required, but always appreciated. 
+You may NOT sub-license, resell, rent, redistribute or otherwise transfer the icon without express written permission from iconmonstr.com -->
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<path id="paypal-icon" d="M399.479,155.441c0,77.442-68.193,138.814-183.89,138.814h-33.727l-25.845,113.131H74.784L154.125,50
+	h134.647C360.189,50,399.479,94.976,399.479,155.441z M314.249,157.768c0-32.436-26.752-41.043-57.846-41.043h-35.865
+	l-23.76,107.048h31.912C275.068,223.772,314.249,205.551,314.249,157.768z M422.847,140.402
+	c15.345,121.098-99.234,183.29-218.949,181.624l-26.139,111.211h-56.254L115.153,462h86.909l25.095-111.046
+	C402.153,345.667,469.487,218,422.847,140.402z"/>
+</svg>
