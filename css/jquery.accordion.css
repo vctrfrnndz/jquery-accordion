@@ -1,0 +1,4 @@
+[data-accordion] [data-content] {
+    overflow: hidden;
+    max-height: 0;
+}
