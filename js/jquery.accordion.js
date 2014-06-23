@@ -65,13 +65,13 @@
             toggleTransition($content);
 
             if(isAccordionGroup) {
-                var $accordionGroup = $accordion.closest('[data-accordion-group]'),
-                    $siblings = $accordion.siblings('[data-accordion]'),
-                    $siblingsChildren = $siblings.find('[data-accordion]'),
+                var $accordionGroup = $accordion.closest(opts.groupElement),
+                    $siblings = $accordion.siblings(self),
+                    $siblingsChildren = $siblings.find(self),
                     $otherAccordions = $siblings.add($siblingsChildren);
 
                 $otherAccordions.each(function() {
-                    var $content = $(this).find('[data-content]');
+                    var $content = $(this).find(opts.contentElement);
 
                     $content.css('max-height', $content.data('oHeight'));
 
