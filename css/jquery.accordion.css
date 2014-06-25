@@ -1,16 +1,49 @@
-[data-accordion],
-[data-accordion-group] {
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
+/*!
+ * jQuery Accordion 0.0.1
+ * (c) 2014 Victor Fernandez <victor@vctrfrnndz.com>
+ * MIT Licensed.
+ */
 
-    -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000;
-}
+/* Requirements */
 
 [data-accordion] [data-content] {
     overflow: hidden;
     max-height: 0;
+}
+
+/* Basic Theme */
+
+[data-control],
+[data-content] > * {
+    border-bottom: 1px solid #888;
+    padding: 10px;
+}
+
+[data-content] [data-accordion] {
+    border: 0;
+    padding: 0;
+}
+
+[data-accordion] [data-control] {
+    position: relative;
+    padding-right: 40px;
+}
+
+[data-accordion] > [data-control]:after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    font-size: 25px;
+    font-weight: 200;
+    color: #444;
+    height: 15px;
+    width: 24px;
+    background: url('../images/down.png') center center no-repeat;
+    background-size: 70% 70%;
+
+}
+
+[data-accordion].open > [data-control]:after {
+    background-image: url('../images/up.png')
 }

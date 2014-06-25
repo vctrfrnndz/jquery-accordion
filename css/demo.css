@@ -55,15 +55,17 @@ a {
 }
 
 .intro .btn {
-    display: block;
-    max-width: 320px;
+    display: inline-block;
+    vertical-align: top;
+    max-width: auto;
     margin: 0 auto;
     border: 1px solid #888;
     color: #333;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border-radius: 3px;
     text-decoration: none;
     font-size: 14px;
+    margin: 0 5px;
     margin-bottom: 15px;
 }
 
@@ -98,54 +100,6 @@ a {
 [data-accordion] [data-content] [data-content] [data-content] {
     background: rgb(228, 255, 228);
 }
-
-[data-accordion] button,
-[data-accordion] article {
-    border-bottom: 1px solid #888;
-    padding: 10px;
-}
-
-article[data-accordion] {
-    border: 0;
-    padding: 0;
-}
-
-article.image {
-    padding: 0;
-}
-
-article.image img {
-    width: 100%;
-}
-
-[data-accordion] [data-control] {
-    position: relative;
-}
-
-[data-accordion] > [data-control]:after {
-    content: "";
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 25px;
-    font-weight: 200;
-    color: #444;
-    height: 20px;
-    width: 20px;
-    background: url('../svg/arrow.svg') center center no-repeat;
-    background-size: 80% 80%;
-    -webkit-transform: rotate(90deg); 
-    -ms-transform: rotate(90deg); 
-    transform: rotate(90deg); 
-
-}
-
-[data-accordion].open > [data-control]:after {
-    -webkit-transform: rotate(-90deg); 
-    -ms-transform: rotate(-90deg); 
-    transform: rotate(-90deg); 
-}
-
 
 table {
   max-width: 100%;
