@@ -41,9 +41,10 @@
     width: 24px;
     background: url('../images/down.png') center center no-repeat;
     background-size: 70% 70%;
-
 }
 
 [data-accordion].open > [data-control]:after {
-    background-image: url('../images/up.png')
+    -webkit-transform: rotate(-180deg); 
+    -ms-transform: rotate(-180deg); 
+    transform: rotate(-180deg); 
 }
