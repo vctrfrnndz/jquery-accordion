@@ -30,7 +30,43 @@
 
         var $accordion = $(self.element),
             $content =  $accordion.find('> ' + opts.contentElement);
-        
+
+        var closedCSS = { 'max-height': 0, 'overflow': 'hidden' };
+
+        var CSStransitions = supportsTransitions();
+
+        function supportsTransitions() {
+            var b = document.body || document.documentElement,
+                s = b.style,
+                p = 'transition';
+
+            if (typeof s[p] == 'string') {
+                return true;
+            }
+
+            var v = ['Moz', 'webkit', 'Webkit', 'Khtml', 'O', 'ms'];
+
+            p = p.charAt(0).toUpperCase() + p.substr(1);
+
+            for (var i=0; i<v.length; i++) {
+                if (typeof s[v[i] + p] == 'string') {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        function requestAnimFrame(cb) {
+            return  requestAnimationFrame(cb) ||
+                    webkitRequestAnimationFrame(cb) ||
+                    mozRequestAnimationFrame(cb) ||
+            
+            function(cb) {
+                setTimeout(cb, 1000 / 60);
+            }
+        }
+
         function toggleTransition($el, remove) {
             if(!remove) {
                 $content.css({
@@ -55,73 +91,103 @@
             $el.data('oHeight', height);
         }
 
+        function closeAccordion($accordion, $content) {
+            if(CSStransitions) {
+                if($content.css('max-height') === 'none') {
+                    $content.css('max-height', $content.data('oHeight'));
+
+                    requestAnimFrame(function() {
+                        $content.css(closedCSS);
+                    });
+                } else {
+                    $content.css(closedCSS);
+                }
+
+                $accordion.removeClass('open');
+            } else {
+                $content.css('max-height', $content.data('oHeight'));
+
+                $content.animate(closedCSS, opts.transitionSpeed);
+
+                $accordion.removeClass('open');
+            }
+        }
+
+        function openAccordion($accordion, $content) {
+            if(CSStransitions) {
+                $content.css('max-height', $content.data('oHeight'));
+
+                setTimeout(function() {
+                    $content.css('max-height', 'none');
+                }, opts.transitionSpeed);
+
+                $accordion.addClass('open');
+            } else {
+                $content.animate({
+                    'max-height': $content.data('oHeight')
+                }, opts.transitionSpeed, function() {
+                    $content.css({'max-height': 'none'});
+                });
+
+                $accordion.addClass('open');
+            }
+        }
+
+        function closeSiblingAccordions($accordion) {
+            var $accordionGroup = $accordion.closest(opts.groupElement);
+
+            var $siblings = $accordion.siblings('[data-accordion]').filter('.open'),
+                $siblingsChildren = $siblings.find('[data-accordion]');
+
+            var $otherAccordions = $siblings.add($siblingsChildren);
+
+            $otherAccordions.each(function() {
+                var $accordion = $(this),
+                    $content = $accordion.find(opts.contentElement);
+
+                closeAccordion($accordion, $content);
+            });
+
+            $otherAccordions.removeClass('open');
+        }
+
         function toggleAccordion() {
             var isAccordionGroup = (opts.singleOpen) ? $accordion.parents(opts.groupElement).length > 0 : false;
 
-            var closedCSS = { 'max-height': 0, 'overflow': 'hidden' };
-
             calculateHeight($content);
 
-            toggleTransition($content);
-
-            if(isAccordionGroup) {
-                var $accordionGroup = $accordion.closest('[data-accordion-group]'),
-                    $siblings = $accordion.siblings('[data-accordion]'),
-                    $siblingsChildren = $siblings.find('[data-accordion]'),
-                    $otherAccordions = $siblings.add($siblingsChildren);
-
-                $otherAccordions.each(function() {
-                    var $content = $(this).find('[data-content]');
-
-                    $content.css('max-height', $content.data('oHeight'));
-
-                    setTimeout(function() {
-                        $content.css(closedCSS);
-                    }, 0.1);
-                });
-
-                $otherAccordions.removeClass('open');
+            if(CSStransitions) {
+                toggleTransition($content);
             }
 
-            $content.promise().done(function() {
-                if($accordion.hasClass('open')) {
-                    if($content.css('max-height') === 'none') {
-                        $content.css('max-height', $content.data('oHeight'));
+            if(isAccordionGroup) {
+                closeSiblingAccordions($accordion);
+            }
 
-                        setTimeout(function() {
-                            $content.css(closedCSS);
-                        }, 0.1);
-                    } else {
-                        $content.css(closedCSS);
-                    }
-
-                    $accordion.removeClass('open');
-                } else {
-                    $content.css('max-height', $content.data('oHeight'));
-                    $accordion.addClass('open');
-
-                    setTimeout(function() {
-                        $content.css('max-height', 'none');
-                    }, opts.transitionSpeed);
-                }
-            });
+            if($accordion.hasClass('open')) {
+                closeAccordion($accordion, $content);
+            } else {
+                openAccordion($accordion, $content);
+            }
         }
 
         function addEventListeners() {
             $accordion.on('click', '> '+ opts.controlElement, toggleAccordion);
         }
 
-        function checkIfCSSisSetup() {
+        function setup() {
             if($content.css('max-height') != 0) {
                 $(opts.contentElement).css({ 'max-height': 0, 'overflow': 'hidden' });
-
-                return false;
             }
 
-            return true;
+            if(!$accordion.attr('data-accordion')) {
+                $accordion.attr('data-accordion', '');
+                $accordion.find(opts.controlElement).attr('data-control', '');
+                $accordion.find(opts.contentElement).attr('data-content', '');
+            }
         }
 
-        checkIfCSSisSetup();
+        setup();
         addEventListeners();
     };
 
