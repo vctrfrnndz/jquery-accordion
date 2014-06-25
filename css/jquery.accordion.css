@@ -1,3 +1,15 @@
+[data-accordion],
+[data-accordion-group] {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+
 [data-accordion] [data-content] {
     overflow: hidden;
     max-height: 0;
