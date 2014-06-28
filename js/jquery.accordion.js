@@ -115,10 +115,18 @@
 
         function openAccordion($accordion, $content) {
             if(CSStransitions) {
+                toggleTransition($content);
+
                 $content.css('max-height', $content.data('oHeight'));
 
                 setTimeout(function() {
-                    $content.css('max-height', 'none');
+                    toggleTransition($content, true);
+
+                    requestAnimFrame(function() {
+                        $content.css('max-height', 'none');
+
+                        toggleTransition($content);
+                    });
                 }, opts.transitionSpeed);
 
                 $accordion.addClass('open');
@@ -155,10 +163,6 @@
             var isAccordionGroup = (opts.singleOpen) ? $accordion.parents(opts.groupElement).length > 0 : false;
 
             calculateHeight($content);
-
-            if(CSStransitions) {
-                toggleTransition($content);
-            }
 
             if(isAccordionGroup) {
                 closeSiblingAccordions($accordion);
