@@ -115,23 +115,33 @@
 
         function addToParentHeight($accordion, qty) {
             var $content = $accordion.filter('.open').find('> [data-content]'),
-                currentHeight = $content.data('oHeight');
+                $childs = $content.find('[data-accordion].open > [data-content]'),
+                $matched = $content.add($childs);
 
             if($accordion.hasClass('open')) {
-                $content.data('oHeight', currentHeight + qty);
+                $matched.each(function() {
+                    var currentHeight = $(this).data('oHeight');
 
-                $content.css('max-height', $content.data('oHeight'));
+                    $(this).data('oHeight', currentHeight + qty);
+
+                    $(this).css('max-height', $(this).data('oHeight'));
+                });
             }
         }
 
         function substractToParentHeight($accordion, qty) {
             var $content = $accordion.filter('.open').find('> [data-content]'),
-                currentHeight = $content.data('oHeight');
+                $childs = $content.find('[data-accordion].open > [data-content]'),
+                $matched = $content.add($childs);
 
             if($accordion.hasClass('open')) {
-                $content.data('oHeight', currentHeight - qty);
+                $matched.each(function() {
+                    var currentHeight = $(this).data('oHeight');
 
-                $content.css('max-height', $content.data('oHeight'));
+                    $(this).data('oHeight', currentHeight - qty);
+
+                    $(this).css('max-height', $(this).data('oHeight'));
+                });
             }
         }
 
