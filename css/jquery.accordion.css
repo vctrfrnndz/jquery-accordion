@@ -13,6 +13,10 @@
 
 /* Basic Theme */
 
+[data-accordion] {
+    line-height: 1;
+}
+
 [data-control],
 [data-content] > * {
     border-bottom: 1px solid #888;
@@ -40,7 +44,7 @@
     height: 15px;
     width: 24px;
     background: url('../images/down.png') center center no-repeat;
-    background-size: 70% 70%;
+    background-size: 50%;
 }
 
 [data-accordion].open > [data-control]:after {
