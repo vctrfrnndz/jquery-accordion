@@ -113,7 +113,7 @@
             $el.data('oHeight', height);
         }
 
-        function addToParentHeight($accordion, qty) {
+        function updateParentHeight($accordion, qty, operation) {
             var $content = $accordion.filter('.open').find('> [data-content]'),
                 $childs = $content.find('[data-accordion].open > [data-content]'),
                 $matched = $content.add($childs);
@@ -122,30 +122,23 @@
                 $matched.each(function() {
                     var currentHeight = $(this).data('oHeight');
 
-                    $(this).data('oHeight', currentHeight + qty);
+                    switch (operation) {
+                        case '+':
+                            $(this).data('oHeight', currentHeight + qty);
+                            break;
+                        case '-':
+                            $(this).data('oHeight', currentHeight - qty);
+                            break;
+                        default:
+                            throw 'updateParentHeight method needs an operation';
+                    }
 
                     $(this).css('max-height', $(this).data('oHeight'));
                 });
             }
         }
 
-        function substractToParentHeight($accordion, qty) {
-            var $content = $accordion.filter('.open').find('> [data-content]'),
-                $childs = $content.find('[data-accordion].open > [data-content]'),
-                $matched = $content.add($childs);
-
-            if($accordion.hasClass('open')) {
-                $matched.each(function() {
-                    var currentHeight = $(this).data('oHeight');
-
-                    $(this).data('oHeight', currentHeight - qty);
-
-                    $(this).css('max-height', $(this).data('oHeight'));
-                });
-            }
-        }
-
-        function updateHeight($accordion) {
+        function refreshHeight($accordion) {
             if($accordion.hasClass('open')) {
                 var $content = $accordion.find('> [data-content]'),
                     $childs = $content.find('[data-accordion].open > [data-content]'),
@@ -162,7 +155,7 @@
                 if(accordionHasParent) {
                     var $parentAccordions = $accordion.parents('[data-accordion]');
 
-                    substractToParentHeight($parentAccordions, $content.data('oHeight'));
+                    updateParentHeight($parentAccordions, $content.data('oHeight'), '-');
                 }
                 
                 $content.css(closedCSS);
@@ -184,7 +177,7 @@
                 if(accordionHasParent) {
                     var $parentAccordions = $accordion.parents('[data-accordion]');
 
-                    addToParentHeight($parentAccordions, $content.data('oHeight'));
+                    updateParentHeight($parentAccordions, $content.data('oHeight'), '+');
                 }
 
                 requestAnimFrame(function() {
@@ -241,7 +234,7 @@
             $accordion.on('click', '> '+ opts.controlElement, toggleAccordion);
 
             $(window).on('resize', debounce(function() {
-                updateHeight($accordion); 
+                refreshHeight($accordion); 
             }));
         }
 
