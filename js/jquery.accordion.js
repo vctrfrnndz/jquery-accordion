@@ -149,15 +149,15 @@
 
         function closeAccordion($accordion, $content) {
             if(CSStransitions) {
-                $content.css(closedCSS);
-
-                $accordion.removeClass('open');
-
                 if(accordionHasParent) {
                     var $parentAccordions = $accordion.parents('[data-accordion]');
 
                     substractToParentHeight($parentAccordions, $content.data('oHeight'));
                 }
+                
+                $content.css(closedCSS);
+
+                $accordion.removeClass('open');
             } else {
                 $content.css('max-height', $content.data('oHeight'));
 
