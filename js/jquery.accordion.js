@@ -31,9 +31,31 @@
         var $accordion = $(self.element),
             $content =  $accordion.find('> ' + opts.contentElement);
 
+        var accordionParentsQty = $accordion.parents('[data-accordion]').length,
+            accordionHasParent = accordionParentsQty > 0;
+
         var closedCSS = { 'max-height': 0, 'overflow': 'hidden' };
 
         var CSStransitions = supportsTransitions();
+
+        function debounce(func, threshold, execAsap) {
+            var timeout;
+
+            return function debounced() {
+                var obj = this,
+                    args = arguments;
+
+                function delayed() {
+                    if (!execAsap) func.apply(obj, args);
+                    timeout = null;
+                };
+
+                if (timeout) clearTimeout(timeout);
+                else if (execAsap) func.apply(obj, args);
+
+                timeout = setTimeout(delayed, threshold || 100);
+            };
+        }
 
         function supportsTransitions() {
             var b = document.body || document.documentElement,
@@ -91,19 +113,51 @@
             $el.data('oHeight', height);
         }
 
+        function addToParentHeight($accordion, qty) {
+            var $content = $accordion.filter('.open').find('> [data-content]'),
+                currentHeight = $content.data('oHeight');
+
+            if($accordion.hasClass('open')) {
+                $content.data('oHeight', currentHeight + qty);
+
+                $content.css('max-height', $content.data('oHeight'));
+            }
+        }
+
+        function substractToParentHeight($accordion, qty) {
+            var $content = $accordion.filter('.open').find('> [data-content]'),
+                currentHeight = $content.data('oHeight');
+
+            if($accordion.hasClass('open')) {
+                $content.data('oHeight', currentHeight - qty);
+
+                $content.css('max-height', $content.data('oHeight'));
+            }
+        }
+
+        function updateHeight($accordion) {
+            if($accordion.hasClass('open')) {
+                var $content = $accordion.find('> [data-content]'),
+                    $childs = $content.find('[data-accordion].open > [data-content]'),
+                    $matched = $content.add($childs);
+                
+                calculateHeight($matched);
+
+                $matched.css('max-height', $matched.data('oHeight'));
+            }
+        }
+
         function closeAccordion($accordion, $content) {
             if(CSStransitions) {
-                if($content.css('max-height') === 'none') {
-                    $content.css('max-height', $content.data('oHeight'));
-
-                    requestAnimFrame(function() {
-                        $content.css(closedCSS);
-                    });
-                } else {
-                    $content.css(closedCSS);
-                }
+                $content.css(closedCSS);
 
                 $accordion.removeClass('open');
+
+                if(accordionHasParent) {
+                    var $parentAccordions = $accordion.parents('[data-accordion]');
+
+                    substractToParentHeight($parentAccordions, $content.data('oHeight'));
+                }
             } else {
                 $content.css('max-height', $content.data('oHeight'));
 
@@ -117,17 +171,15 @@
             if(CSStransitions) {
                 toggleTransition($content);
 
-                $content.css('max-height', $content.data('oHeight'));
+                if(accordionHasParent) {
+                    var $parentAccordions = $accordion.parents('[data-accordion]');
 
-                setTimeout(function() {
-                    toggleTransition($content, true);
+                    addToParentHeight($parentAccordions, $content.data('oHeight'));
+                }
 
-                    requestAnimFrame(function() {
-                        $content.css('max-height', 'none');
-
-                        toggleTransition($content);
-                    });
-                }, opts.transitionSpeed);
+                requestAnimFrame(function() {
+                    $content.css('max-height', $content.data('oHeight'));
+                });
 
                 $accordion.addClass('open');
             } else {
@@ -145,7 +197,7 @@
             var $accordionGroup = $accordion.closest(opts.groupElement);
 
             var $siblings = $accordion.siblings('[data-accordion]').filter('.open'),
-                $siblingsChildren = $siblings.find('[data-accordion]');
+                $siblingsChildren = $siblings.find('[data-accordion]').filter('.open');
 
             var $otherAccordions = $siblings.add($siblingsChildren);
 
@@ -177,6 +229,10 @@
 
         function addEventListeners() {
             $accordion.on('click', '> '+ opts.controlElement, toggleAccordion);
+
+            $(window).on('resize', debounce(function() {
+                updateHeight($accordion); 
+            }));
         }
 
         function setup() {
