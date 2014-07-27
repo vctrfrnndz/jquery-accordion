@@ -113,12 +113,18 @@
             $el.data('oHeight', height);
         }
 
-        function updateParentHeight($accordion, qty, operation) {
-            var $content = $accordion.filter('.open').find('> [data-content]'),
+        function updateParentHeight($parentAccordion, $currentAccordion, qty, operation) {
+            var $content = $parentAccordion.filter('.open').find('> [data-content]'),
                 $childs = $content.find('[data-accordion].open > [data-content]'),
-                $matched = $content.add($childs);
+                $matched;
 
-            if($accordion.hasClass('open')) {
+            if(!opts.singleOpen) {
+                $childs = $childs.not($currentAccordion.siblings('[data-accordion].open').find('> [data-content]'));
+            }
+
+            $matched = $content.add($childs);
+
+            if($parentAccordion.hasClass('open')) {
                 $matched.each(function() {
                     var currentHeight = $(this).data('oHeight');
 
@@ -155,7 +161,7 @@
                 if(accordionHasParent) {
                     var $parentAccordions = $accordion.parents('[data-accordion]');
 
-                    updateParentHeight($parentAccordions, $content.data('oHeight'), '-');
+                    updateParentHeight($parentAccordions, $accordion, $content.data('oHeight'), '-');
                 }
                 
                 $content.css(closedCSS);
@@ -177,7 +183,7 @@
                 if(accordionHasParent) {
                     var $parentAccordions = $accordion.parents('[data-accordion]');
 
-                    updateParentHeight($parentAccordions, $content.data('oHeight'), '+');
+                    updateParentHeight($parentAccordions, $accordion, $content.data('oHeight'), '+');
                 }
 
                 requestAnimFrame(function() {
