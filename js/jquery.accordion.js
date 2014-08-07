@@ -80,12 +80,12 @@
         }
 
         function requestAnimFrame(cb) {
-            return  requestAnimationFrame(cb) ||
-                    webkitRequestAnimationFrame(cb) ||
-                    mozRequestAnimationFrame(cb) ||
-            
-            function(cb) {
-                setTimeout(cb, 1000 / 60);
+            if(window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame) {
+                return  requestAnimationFrame(cb) ||
+                        webkitRequestAnimationFrame(cb) ||
+                        mozRequestAnimationFrame(cb);
+            } else {
+                return setTimeout(cb, 1000 / 60);
             }
         }
 
@@ -237,7 +237,9 @@
         }
 
         function addEventListeners() {
-            $accordion.on('click', '> '+ opts.controlElement, toggleAccordion);
+            var $controls = $accordion.find('> ' + opts.controlElement);
+
+            $controls.on('click', toggleAccordion);
 
             $(window).on('resize', debounce(function() {
                 refreshHeight($accordion); 
