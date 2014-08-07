@@ -29,6 +29,7 @@
             opts = self.options;
 
         var $accordion = $(self.element),
+            $controls = $accordion.find('> ' + opts.controlElement),
             $content =  $accordion.find('> ' + opts.contentElement);
 
         var accordionParentsQty = $accordion.parents('[data-accordion]').length,
@@ -237,8 +238,6 @@
         }
 
         function addEventListeners() {
-            var $controls = $accordion.find('> ' + opts.controlElement);
-
             $controls.on('click', toggleAccordion);
 
             $(window).on('resize', debounce(function() {
@@ -247,9 +246,21 @@
         }
 
         function setup() {
-            if($content.css('max-height') != 0) {
-                $(opts.contentElement).css({ 'max-height': 0, 'overflow': 'hidden' });
-            }
+            $content.each(function() {
+                var $curr = $(this);
+
+                if($curr.css('max-height') != 0) {
+                    if(!$curr.closest('[data-accordion]').hasClass('open')) {
+                        $curr.css({ 'max-height': 0, 'overflow': 'hidden' });
+                    } else {
+                        toggleTransition($curr);
+                        calculateHeight($curr);
+
+                        $curr.css('max-height', $curr.data('oHeight'));
+                    }
+                }
+            });
+            
 
             if(!$accordion.attr('data-accordion')) {
                 $accordion.attr('data-accordion', '');
