@@ -11,20 +11,20 @@ Developed by [@vctrfrnndz](//vctrfrnndz.com). Licensed under the MIT License.
 
 <h3>Options</h3>
 
-transitionSpeed - (default:300	type:int description:Transition speed on miliseconds.)
+<strong>transitionSpeed</strong> - (default:300	type:int description:Transition speed on miliseconds.)
 
-transitionEasing - (default:'ease'	type:string	description: CSS value for easing)
+<strong>transitionEasing</strong> - (default:'ease'	type:string	description: CSS value for easing)
 
-controlElement - (default: '[data-control]'	type: string description: CSS selector for the element acting as a button inside accordions.)
+<strong>controlElement</strong> - (default: '[data-control]'	type: string description: CSS selector for the element acting as a button inside accordions.)
 
-contentElement - (default: '[data-content]'	type: string description:CSS selector for the element containing hide/show content.)
+<strong>contentElement</strong> - (default: '[data-content]'	type: string description:CSS selector for the element containing hide/show content.)
 
-groupElement - (default: '[data-accordion-group]'	type:string	 description: CSS selector for a parent element containing a group of accordions.)
+<strong>groupElement</strong> - (default: '[data-accordion-group]'	type:string	 description: CSS selector for a parent element containing a group of accordions.)
 
-singleOpen - (default:true	type:boolean	description: Opens a single accordion a time. If false, multiple accordions can be open a time.)
+<strong>singleOpen</strong> - (default:true	type:boolean	description: Opens a single accordion a time. If false, multiple accordions can be open a time.)
 
 <h3>Events</h3>
 
-open: fires when any accordion closes
+<strong>open:</strong> fires when any accordion closes
 
-close: fires when any accordion opends
+<strong>close: </strong> fires when any accordion opens
