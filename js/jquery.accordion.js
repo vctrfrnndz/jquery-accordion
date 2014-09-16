@@ -93,7 +93,7 @@
         function toggleTransition($el, remove) {
             if(!remove) {
                 $content.css({
-                    '-webkit-transition': 'max-height ' + opts.transitionSpeed + 'ms ' + opts.transitionEasing, 
+                    '-webkit-transition': 'max-height ' + opts.transitionSpeed + 'ms ' + opts.transitionEasing,
                     'transition': 'max-height ' + opts.transitionSpeed + 'ms ' + opts.transitionEasing
                 });
             } else {
@@ -150,7 +150,7 @@
                 var $content = $accordion.find('> [data-content]'),
                     $childs = $content.find('[data-accordion].open > [data-content]'),
                     $matched = $content.add($childs);
-                
+
                 calculateHeight($matched);
 
                 $matched.css('max-height', $matched.data('oHeight'));
@@ -158,13 +158,14 @@
         }
 
         function closeAccordion($accordion, $content) {
+            $accordion.trigger('close');
             if(CSStransitions) {
                 if(accordionHasParent) {
                     var $parentAccordions = $accordion.parents('[data-accordion]');
 
                     updateParentHeight($parentAccordions, $accordion, $content.data('oHeight'), '-');
                 }
-                
+
                 $content.css(closedCSS);
 
                 $accordion.removeClass('open');
@@ -178,6 +179,7 @@
         }
 
         function openAccordion($accordion, $content) {
+            $accordion.trigger('open');
             if(CSStransitions) {
                 toggleTransition($content);
 
@@ -241,7 +243,7 @@
             $controls.on('click', toggleAccordion);
 
             $(window).on('resize', debounce(function() {
-                refreshHeight($accordion); 
+                refreshHeight($accordion);
             }));
         }
 
@@ -260,7 +262,7 @@
                     }
                 }
             });
-            
+
 
             if(!$accordion.attr('data-accordion')) {
                 $accordion.attr('data-accordion', '');
@@ -276,7 +278,7 @@
     $.fn[pluginName] = function ( options ) {
         return this.each(function () {
             if (!$.data(this, 'plugin_' + pluginName)) {
-                $.data(this, 'plugin_' + pluginName, 
+                $.data(this, 'plugin_' + pluginName,
                 new Accordion( this, options ));
             }
         });
