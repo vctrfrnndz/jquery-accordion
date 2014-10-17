@@ -52,7 +52,7 @@ For a simple accordion/dropdown, use the following structure/data-attributes:
 </div>
 ```
 
-For a group of accordions, you can use the `data-accordion-group` attribute on a parent, this will allow you to activate/deactivate the single open behavior by setting ´singleOpen´ to true/false.
+For a group of accordions, you can use the `data-accordion-group` attribute on a parent, this will allow you to activate/deactivate the single open behavior by setting `singleOpen` to true/false.
 
 ```html
 <div data-accordion-group>
