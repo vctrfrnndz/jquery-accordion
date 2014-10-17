@@ -9,47 +9,9 @@ Supports IE9+ and modern browsers.
 
 Developed by [@vctrfrnndz](//vctrfrnndz.com). Licensed under the MIT License.
 
-**Sample Structure**
-
-For a simple accordion/dropdown, use the following structure/data-attributes:
-
-```
-<div data-accordion>
-    <div data-control>Control</div>
-    <div data-content>
-        <div>Row</div>
-        <div>Row</div>
-        <div>Row</div>
-    </div>
-</div>
-```
-
-For a group of accordions, you can use the `data-accordion-group` attribute on a parent, this will allow you to activate/deactivate the single open behavior by setting ´singleOpen´ to true/false.
-
-```
-<div data-accordion-group>
-    <div class="accordion" data-accordion>
-        <div data-control>Control</div>
-        <div data-content>
-            <div>Row</div>
-            <div>Row</div>
-            <div>Row</div>
-        </div>
-    </div>
-    <div class="accordion" data-accordion>
-        <div data-control>Control</div>
-        <div data-content>
-            <div>Row</div>
-            <div>Row</div>
-            <div>Row</div>
-        </div>
-    </div>
-</div>
-```
-
 **Usage**
 
-```
+```javascript
 $('.accordion').accordion({
     "transitionSpeed": 400
 });
@@ -74,3 +36,41 @@ $('.accordion').accordion({
 `open:` fires when any accordion closes
 
 `close:` fires when any accordion opens
+
+**Sample Structure**
+
+For a simple accordion/dropdown, use the following structure/data-attributes:
+
+```html
+<div data-accordion>
+    <div data-control>Control</div>
+    <div data-content>
+        <div>Row</div>
+        <div>Row</div>
+        <div>Row</div>
+    </div>
+</div>
+```
+
+For a group of accordions, you can use the `data-accordion-group` attribute on a parent, this will allow you to activate/deactivate the single open behavior by setting ´singleOpen´ to true/false.
+
+```html
+<div data-accordion-group>
+    <div class="accordion" data-accordion>
+        <div data-control>Control</div>
+        <div data-content>
+            <div>Row</div>
+            <div>Row</div>
+            <div>Row</div>
+        </div>
+    </div>
+    <div class="accordion" data-accordion>
+        <div data-control>Control</div>
+        <div data-content>
+            <div>Row</div>
+            <div>Row</div>
+            <div>Row</div>
+        </div>
+    </div>
+</div>
+```
