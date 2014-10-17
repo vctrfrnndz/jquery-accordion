@@ -9,7 +9,53 @@ Supports IE9+ and modern browsers.
 
 Developed by [@vctrfrnndz](//vctrfrnndz.com). Licensed under the MIT License.
 
-***Options***
+**Sample Structure**
+
+For a simple accordion/dropdown, use the following structure/data-attributes:
+
+```
+<div data-accordion>
+    <div data-control>Control</div>
+    <div data-content>
+        <div>Row</div>
+        <div>Row</div>
+        <div>Row</div>
+    </div>
+</div>
+```
+
+For a group of accordions, you can use the `data-accordion-group` attribute on a parent, this will allow you to activate/deactivate the single open behavior by setting ´singleOpen´ to true/false.
+
+```
+<div data-accordion-group>
+    <div class="accordion" data-accordion>
+        <div data-control>Control</div>
+        <div data-content>
+            <div>Row</div>
+            <div>Row</div>
+            <div>Row</div>
+        </div>
+    </div>
+    <div class="accordion" data-accordion>
+        <div data-control>Control</div>
+        <div data-content>
+            <div>Row</div>
+            <div>Row</div>
+            <div>Row</div>
+        </div>
+    </div>
+</div>
+```
+
+**Usage**
+
+```
+$('.accordion').accordion({
+    "transitionSpeed": 400
+});
+```
+
+**Options**
 
 `transitionSpeed` - (default:300 type:int description:Transition speed on miliseconds.)
 
@@ -23,7 +69,7 @@ Developed by [@vctrfrnndz](//vctrfrnndz.com). Licensed under the MIT License.
 
 `singleOpen` - (default:true type:boolean    description: Opens a single accordion a time. If false, multiple accordions can be open a time.)
 
-***Events***
+**Events**
 
 `open:` fires when any accordion closes
 
