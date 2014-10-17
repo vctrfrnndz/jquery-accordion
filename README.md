@@ -33,9 +33,9 @@ $('.accordion').accordion({
 
 **Events**
 
-`open:` fires when any accordion closes
+`open` fires when any accordion closes
 
-`close:` fires when any accordion opens
+`close` fires when any accordion opens
 
 **Sample Structure**
 
