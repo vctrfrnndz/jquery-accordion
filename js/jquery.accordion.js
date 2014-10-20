@@ -158,7 +158,8 @@
         }
 
         function closeAccordion($accordion, $content) {
-            $accordion.trigger('close');
+            $accordion.trigger('accordion.close');
+            
             if(CSStransitions) {
                 if(accordionHasParent) {
                     var $parentAccordions = $accordion.parents('[data-accordion]');
@@ -179,7 +180,7 @@
         }
 
         function openAccordion($accordion, $content) {
-            $accordion.trigger('open');
+            $accordion.trigger('accordion.open');
             if(CSStransitions) {
                 toggleTransition($content);
 
