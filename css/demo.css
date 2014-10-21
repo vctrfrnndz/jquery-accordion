@@ -35,6 +35,10 @@ h1, h2 {
     line-height: 0.85;
 }
 
+h1 {
+    margin-bottom: 10px;
+}
+
 .intro {
     text-align: center;
     margin-bottom: 40px;
