@@ -1,6 +1,8 @@
 jQuery Accordion
 ================
 
+<img style="max-width: 300px;" src="http://cl.ly/image/0W3c051W0e13/accordion.png">
+
 Responsive, CSS powered, jQuery accordion plugin.
 
 Jquery Accordion uses CSS transitions to animate opening/closing with a fallback to jQuery's animate when CSS transitions are not supported. It takes little configuration or code to use it on your project. [Try out the demo](//vctrfrnndz.github.io/jquery-accordion).
