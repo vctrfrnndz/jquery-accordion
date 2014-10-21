@@ -1,7 +1,7 @@
 jQuery Accordion
 ================
 
-<img style="max-width: 300px;" src="http://cl.ly/image/0W3c051W0e13/accordion.png">
+<img width="300" src="http://cl.ly/image/0W3c051W0e13/accordion.png">
 
 Responsive, CSS powered, jQuery accordion plugin.
 
