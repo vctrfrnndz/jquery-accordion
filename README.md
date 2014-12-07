@@ -22,7 +22,7 @@ $('.accordion').accordion({
 <table>
 <thead>
 <tr>
-<th>Variable</th>
+<th>Name</th>
 <th>Default</th>
 <th>Type</th>
 <th>Description</th>
