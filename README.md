@@ -22,7 +22,7 @@ $('.accordion').accordion({
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Variable</th>
 <th>Default</th>
 <th>Type</th>
 <th>Description</th>
@@ -31,37 +31,37 @@ $('.accordion').accordion({
 <tbody>
 <tr>
 <td>transitionSpeed</td>
-<td>300</td>
+<td>`300`</td>
 <td>int</td>
 <td>Transition speed on miliseconds.</td>
 </tr>
 <tr>
 <td>transitionEasing</td>
-<td>'ease'</td>
+<td>`'ease'`</td>
 <td>string</td>
 <td>CSS value for easing</td>
 </tr>
 <tr>
 <td>controlElement</td>
-<td>'[data-control]'</td>
+<td>`'[data-control]'`</td>
 <td>string</td>
 <td>CSS selector for the element acting as a button inside accordions.</td>
 </tr>
 <tr>
 <td>contentElement</td>
-<td>'[data-content]'</td>
+<td>`'[data-content]'`</td>
 <td>string</td>
 <td>CSS selector for the element containing hide/show content.</td>
 </tr>
 <tr>
 <td>groupElement</td>
-<td>'[data-accordion-group]'</td>
+<td>`'[data-accordion-group]'`</td>
 <td>string</td>
 <td>CSS selector for a parent element containing a group of accordions.</td>
 </tr>
 <tr>
 <td>singleOpen</td>
-<td>true</td>
+<td>`true`</td>
 <td>boolean</td>
 <td>Opens a single accordion a time. If false, multiple accordions can be open a time.</td>
 </tr>
