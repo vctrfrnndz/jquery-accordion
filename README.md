@@ -18,14 +18,14 @@ $('.accordion').accordion({
 ```
 
 **Options**
-| Name             | Default                    | Type    | Description                                                                        |
-|------------------|----------------------------|---------|------------------------------------------------------------------------------------|
-| transitionSpeed  | `300`                      | int     | Transition speed on miliseconds.                                                   |
-| transitionEasing | `'ease'`                   | string  | CSS value for easing.                                                              |
-| controlElement   | `'[data-control]'`         | string  | CSS selector for the element acting as a button inside accordions.                 |
-| contentElement   | `'[data-content]'`         | string  | CSS selector for the element containing hide/show content.                         |
-| groupElement     | `'[data-accordion-group]'` | string  | CSS selector for a parent element containing a group of accordions.                |
-| singleOpen       | `true`                     | boolean | Opens a single accordion a time. If false, multiple accordions can be open a time. |
+Name             | Default                    | Type    | Description                                             
+-----------------|----------------------------|---------|------------
+transitionSpeed  | `300`                      | int     | Transition speed on miliseconds.                         
+transitionEasing | `'ease'`                   | string  | CSS value for easing.                                    
+controlElement   | `'[data-control]'`         | string  | CSS selector for the element acting as a button inside accordions.
+contentElement   | `'[data-content]'`         | string  | CSS selector for the element containing hide/show content. 
+groupElement     | `'[data-accordion-group]'` | string  | CSS selector for a parent element containing a group of accordions.
+singleOpen       | `true`                     | boolean | Opens a single accordion a time. If false, multiple accordions can be open a time.
 
 **Events**
 
