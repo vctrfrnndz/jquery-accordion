@@ -18,6 +18,7 @@ $('.accordion').accordion({
 ```
 
 **Options**
+
 Name             | Default                    | Type    | Description                                             
 -----------------|----------------------------|---------|------------
 transitionSpeed  | `300`                      | int     | Transition speed on miliseconds.                         
