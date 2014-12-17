@@ -243,7 +243,13 @@
         function addEventListeners() {
             $controls.on('click', toggleAccordion);
             
-            $controls.on('accordion.toggle', toggleAccordion);
+            $controls.on('accordion.toggle', function() {
+                if(opts.singleOpen && $controls.length > 1) {
+                    return false;
+                }
+                
+                toggleAccordion();
+            });
 
             $(window).on('resize', debounce(function() {
                 refreshHeight($accordion);
