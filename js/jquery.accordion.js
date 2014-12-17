@@ -242,6 +242,8 @@
 
         function addEventListeners() {
             $controls.on('click', toggleAccordion);
+            
+            $controls.on('accordion.toggle', toggleAccordion);
 
             $(window).on('resize', debounce(function() {
                 refreshHeight($accordion);
