@@ -34,6 +34,8 @@ singleOpen       | `true`                     | boolean | Opens a single accordi
 
 `accordion.close` fires when any accordion closes
 
+`accordion.trigger` toggles accordion open/close when triggered on a controlElement.
+
 **Sample Structure**
 
 For a simple accordion/dropdown, use the following structure/data-attributes:
