@@ -9,7 +9,7 @@ Supports IE9+ and modern browsers.
 
 Developed by [@vctrfrnndz](//vctrfrnndz.com). Licensed under the MIT License.
 
-**Usage**
+### Usage
 
 ```javascript
 $('.accordion').accordion({
@@ -17,7 +17,7 @@ $('.accordion').accordion({
 });
 ```
 
-**Options**
+### Options
 
 Name             | Default                    | Type    | Description
 :----------------|:---------------------------|:--------|:-----------
@@ -28,7 +28,7 @@ contentElement   | `'[data-content]'`         | string  | CSS selector for the e
 groupElement     | `'[data-accordion-group]'` | string  | CSS selector for a parent element containing a group.
 singleOpen       | `true`                     | boolean | Opens a single accordion a time.
 
-**Events**
+### Events
 
 `accordion.open` fires when any accordion opens
 
@@ -36,7 +36,7 @@ singleOpen       | `true`                     | boolean | Opens a single accordi
 
 `accordion.toggle` toggles accordion open/close when triggered on a controlElement. This will not be triggered if it affects more than one accordion while `singleOpen`is enabled.
 
-**Sample Structure**
+### Sample Structure
 
 For a simple accordion/dropdown, use the following structure/data-attributes:
 
