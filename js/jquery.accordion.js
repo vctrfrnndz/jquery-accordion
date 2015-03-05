@@ -108,7 +108,7 @@
             var height = 0;
 
             $el.children().each(function() {
-                height = height + $(this).outerHeight();
+                height = height + $(this).outerHeight(true);
             });
 
             $el.data('oHeight', height);
