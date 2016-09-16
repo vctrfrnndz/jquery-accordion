@@ -73,3 +73,20 @@ For a group of accordions, you can use the `data-accordion-group` attribute on a
     </div>
 </div>
 ```
+
+### Starting with opened state
+
+To initialize the accordion with an open state just add the class `.open` to your accordion element.
+
+```html
+<div data-accordion-group>
+    <div class="accordion open" data-accordion>
+        <div data-control>Control</div>
+        <div data-content>
+            <div>Row</div>
+            <div>Row</div>
+            <div>Row</div>
+        </div>
+    </div>
+</div>
+```
