@@ -251,7 +251,9 @@
                 toggleAccordion();
             });
             
-            $controls.on('accordion.refresh', refreshHeight);
+            $controls.on('accordion.refresh', function() {
+                refreshHeight($accordion);
+            });
 
             $(window).on('resize', debounce(function() {
                 refreshHeight($accordion);
