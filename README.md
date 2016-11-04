@@ -36,6 +36,8 @@ singleOpen       | `true`                     | boolean | Opens a single accordi
 
 `accordion.toggle` toggles accordion open/close when triggered on a controlElement. This will not be triggered if it affects more than one accordion while `singleOpen`is enabled.
 
+`accordion.refresh` manually refreshes the height of an accordion. Useful when adding elements to the accordion dynamically.
+
 ### Sample Structure
 
 For a simple accordion/dropdown, use the following structure/data-attributes:
