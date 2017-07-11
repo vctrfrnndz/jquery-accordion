@@ -29,7 +29,7 @@
             opts = self.options;
 
         var $accordion = $(self.element),
-            $controls = $accordion.find(opts.controlElement),
+            $controls = $accordion.find('> ' + opts.controlElement),
             $content =  $accordion.find('> ' + opts.contentElement);
 
         var accordionParentsQty = $accordion.parents('[data-accordion]').length,
