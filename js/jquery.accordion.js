@@ -81,12 +81,14 @@
         }
 
         function requestAnimFrame(cb) {
-            if(window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame) {
-                return  requestAnimationFrame(cb) ||
-                        webkitRequestAnimationFrame(cb) ||
-                        mozRequestAnimationFrame(cb);
+            if(window.requestAnimationFrame){
+                requestAnimationFrame(cb);
+            } else if (window.webkitRequestAnimationFrame) {
+                webkitRequestAnimationFrame(cb);
+            } else if (window.mozRequestAnimationFrame) {
+                mozRequestAnimationFrame(cb);
             } else {
-                return setTimeout(cb, 1000 / 60);
+                setTimeout(cb, 1000 / 60);
             }
         }
 
