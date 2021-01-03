@@ -1,0 +1,17 @@
+{
+  "name": "jquery-accordion",
+  "version": "1.0.0",
+  "description": "jQuery Accordion",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/attributech/jquery-accordion.git"
+  },
+  "author": "vctrfrnndz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/attributech/jquery-accordion/issues"
+  },
+  "homepage": "https://github.com/attributech/jquery-accordion#readme"
+}
